@@ -1,0 +1,13 @@
+// FFT accelerometer/vibration sensor
+
+link to someone who tried to use one:
+https://forum.arduino.cc/index.php?topic=62607.0
+
+link to reichelt for adxl335:
+https://www.reichelt.de/arduino-grove-3-axis-accelerometer-analog-adxl335-grv-3axis-acc-a-p191207.html?r=1
+
+link to fft explanation:
+http://www.arduinoos.com/2010/10/fast-fourier-transform-fft/
+
+sensor: ADXL322
+	ADXL335 (easier)

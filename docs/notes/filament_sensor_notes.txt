@@ -1,0 +1,20 @@
+//Macro to define if sensor is present
+FILAMENT_RUNOUT_SENSOR in Configuration.h
+//Number of sensors, signal inverting and internal pull up resistor macros are available in Configuration.h as well by the following macros:
+FIL_RUNOUT_INVERTING (default is false, meaning HIGH->filament is present)
+FIL_RUNOUT_PULLUP
+FILAMENT_RUNOUT_SCRIPT (default is "M600", which means pause and move to side)
+
+//filament runout sensor is defined in runout.h and implemented in runout.cpp
+FILAMENT_RUNOUT_SCRIPT is run when pin d4 of the servo reads a low signal
+check() is used to check the state and is used in the run() function
+run() is used to run the FILAMENT_RUNOUT_SCRIPT
+
+gcode_M600() is run when "M600" is parsed (Marlin_main.cpp)
+
+//Functions used in gcode_M600() to pause the print
+pause_print(retract, park_point, unload_length, true)
+wait_for_filament_reload(beep_count);
+resume_print(slow_load_length, fast_load_length, ADVANCED_PAUSE_PURGE_LENGTH, beep_count)
+
+

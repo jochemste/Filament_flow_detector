@@ -1,0 +1,92 @@
+Rotary encoder:
+       Sensor: KY-040
+       -reichelt.com:
+       Seems to have only 3 pins. horizontal. 1.70E
+         https://www.reichelt.com/de/en/alps-stec12e-rotary-pulse-encoder-24-24-horiz-w-o-pb-stec12e05-p73921.html?&trstct=pos_10
+       Also three pins. vertical. 1.70E
+	 https://www.reichelt.com/de/en/alps-stec12e-rotary-pulse-encoder-24-24-vert-w-o-pb-stec12e07-p73922.html?&trstct=pos_11
+       Creates real code, not very useful. 2.60E
+	 https://www.reichelt.com/de/en/rotary-encoder-switch-10-way-with-vertical-axis-kmr-10-p9433.html?&trstct=pos_7
+       Easy for 3d print design. Horizontal pins. 2.90E
+	 https://www.reichelt.com/de/en/alps-stec11b-rotary-pulse-encoder-15-30-horiz-w-o-pb-stec11b02-p73912.html?&trstct=pos_11
+
+       -conrad.de:
+       5 pin horizontal. Easy arduino compatibility. Probably already code available for it. 4.29E
+       	 https://www.conrad.de/de/p/sensor-kit-com-ky040re-arduino-raspberry-pi-1695709.html
+	 
+       -digikey.com:
+         https://www.digikey.com/product-detail/en/bourns-inc/PEC12R-4225F-S0024/PEC12R-4225F-S0024-ND/4499648
+	 https://www.digikey.com/product-detail/en/tt-electronics-bi/EN11-HSM1AF15/987-1188-ND/2408766
+       Tutorial:
+       https://henrysbench.capnfatz.com/henrys-bench/arduino-sensors-and-input/keyes-ky-040-arduino-rotary-encoder-user-manual/
+       Extra links:
+       https://hackaday.com/2015/06/16/prevent-failed-prints-with-a-filament-speed-sensor/
+       Extra notes:
+       Stabilise output by adding .47uF capacitors from clk to gnd and dt to gnd
+
+Snap-action switch:
+	Switch:
+	-reichelt.com:
+	Very suitable. Wheel on lever. 0.6N force required. 3.15E
+	  https://www.reichelt.com/de/en/snap-action-switch-5-a-250-v-changer-solder-mar-1050-5702-p32731.html?&trstct=pos_12
+	No wheel on lever. 0.5N force required. 2.50E
+	  https://www.reichelt.com/de/en/snap-action-switch-5-a-250-v-changer-solder-mar-1050-5202-p32729.html?&trstct=pos_14
+	Same as previous one, more expensive. 2.90E
+	  https://www.reichelt.com/de/en/snap-action-switch-5-a-250-v-changer-pcb-conn-mar-1050-7202-p32730.html?&trstct=pos_4
+	-conrad.de:
+	No price available. Wheel one lever.
+	  https://www.conrad.de/de/p/pololu-snap-action-switch-with-16-3mm-roller-lever-3-pin-spdt-5a-802556205.html
+	-digikey.com:
+	  https://www.digikey.com/product-detail/en/panasonic-electronic-components/ESE-22MV21T/P13585STR-ND/1245478
+	  https://www.digikey.com/product-detail/en/c-k/ZMA00A150L04PC/CKN10157-ND/2044493
+	Tutorial:
+	  https://all3dp.com/2/weekend-project-make-your-own-filament-sensor/
+	Extra notes:
+	  Switch to detect presence of filament.
+	  Needs casing in order to work.
+
+PIR sensor:
+	Sensor:
+	-reichelt.com:
+	  https://www.reichelt.com/de/en/development-boards-mini-board-pir-motion-sensor-debo-pir-motion-p215897.html?&trstct=pos_5
+	  -conrad.de:
+	    https://www.conrad.de/de/p/iduino-pir-bewegungssensor-modul-1-st-se062-5-v-dc-1485335.html
+	  -digikey.com:
+	  https://www.digikey.com/product-detail/en/parallax-inc/555-28027/555-28027-ND/1774435
+	Tutorial:
+	https://learn.adafruit.com/pir-passive-infrared-proximity-motion-sensor/overview
+	Extra notes:
+	To track the movement of the nozzle, detecting if the printer is still in operation.
+
+Microwave Doppler radar:
+	  Sensor: RCWL-0516
+	  Tutorial:
+	  https://www.electroschematics.com/13246/get-started-microwave-radar-motion-sensor/
+	  Extra notes:
+
+Firmware 3d printer:
+	Name: Marlin
+	Source:
+	https://github.com/MarlinFirmware/Marlin
+	Extra notes:
+
+
+--Ready made ideas:
+	Snap action sensor made for marlin and octoprint:
+	https://www.thingiverse.com/thing:2147179
+
+List to buy:
+     Rotary encoder: 2 pin on mic
+     -https://www.reichelt.com/de/en/alps-stec12e-rotary-pulse-encoder-24-24-horiz-w-o-pb-stec12e05-p73921.html?&trstct=pos_10
+     Snap action switch: 1 pin on mic
+     -https://www.reichelt.com/de/en/snap-action-switch-5-a-250-v-changer-solder-mar-1050-5702-p32731.html?&trstct=pos_12
+
+     Microwave doppler radar: 1 pin on mic
+     -RCWL-0516
+
+     Arduino Micro: 20 pins. incl 7 pwm, 12 analogue input
+     https://www.reichelt.com/de/en/arduino-micro-atmega32u4-micro-usb-arduino-micro-p130166.html?&trstct=pos_8
+
+small stuff to buy:
+      -4x 10K resistor
+      -2x 0.01uF capacitor
