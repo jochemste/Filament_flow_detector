@@ -16,6 +16,11 @@
   #define FIL_PRESENT_LOGIC HIGH
 #endif FIL_RUNOUT_INVERSE
 
+// Enable two headed printer support (parallel printing)
+//#define TWO_HEAD_ENABLED
+  #ifdef TWO_HEAD_ENABLED
+  #endif TWO_HEAD_ENABLED
+
 // Enable the encoder wheel to detect filament movement
 #define ENCODER_ENABLED
   #ifdef ENCODER_ENABLED
@@ -28,12 +33,24 @@
     #define SNAP_LOGIC_INVERTED false
   #endif SNAP_SWITCH_ENABLED
 
+// Uncomment to enable the accelerometer
+//#define ACCELEROMETER_ENABLED
+  #ifdef ACCELEROMETER_ENABLED
+  #endif ACCELEROMETER_ENABLED
+
 // Enable the error handler
 #define ERROR_HANDLER_ENABLED
   #ifdef ERROR_HANDLER_ENABLED
   #endif ERROR_HANDLER_ENABLED
 
-// Enable test mode
+//Uncomment to enable start signal
+//#define START_SIGNAL_ENABLED
+  #ifdef START_SIGNAL_ENABLED
+  #endif START_SIGNAL_ENABLED
+
+// Test mode constantly sends the signal to continue to the printer and
+// runs the enabled sensor test functions
+// Uncomment to enable test mode
 //#define TEST_ENABLED
   #ifdef TEST_ENABLED
   #endif TEST_ENABLED

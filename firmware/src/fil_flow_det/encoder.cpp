@@ -9,19 +9,18 @@ Encoder::~Encoder(){
 }
 
 void Encoder::init(){
-/*
-  pinMode(PIN_A_ENCODER, INPUT);
-  pinMode(PIN_B_ENCODER, INPUT);
-  pinMode(PIN_C_ENCODER, OUTPUT);
-*/
-
-  init_input_pin(PIN_A_ENCODER, input);
-  init_input_pin(PIN_B_ENCODER, input);
-  init_input_pin(PIN_C_ENCODER, output);
+  toggle_initialised();
+  if(get_initialised_state()){
+    init_input_pin(PIN_A_ENCODER, input);
+    init_input_pin(PIN_B_ENCODER, input);
+    init_input_pin(PIN_C_ENCODER, output);
   
-  digitalWrite(PIN_C_ENCODER, HIGH);
+    digitalWrite(PIN_C_ENCODER, HIGH);
+  }
 }
 
+//                               ab ab ab ab
+// encoder clockwise turn order: 00 10 11 01
 void Encoder::update_state(){
   previous_pin_state = current_pin_state;
   current_pin_state = read_pins();
@@ -71,7 +70,7 @@ void Encoder::update_state(){
   case A_HIGH_B_LOW:
     switch(previous_pin_state){
     case A_LOW_B_LOW:
-      current_state = E_TURNING_CCW;
+      current_state = E_TURNING_CW;
       break;
     case A_LOW_B_HIGH:
       current_state = ERROR_ENCODER;
@@ -80,7 +79,7 @@ void Encoder::update_state(){
       current_state = E_NOT_TURNING;
       break;
     case A_HIGH_B_HIGH:
-      current_state = E_TURNING_CW;
+      current_state = E_TURNING_CCW;
       break;
     default:
       current_state = ERROR_ENCODER;
@@ -94,10 +93,10 @@ void Encoder::update_state(){
       current_state = ERROR_ENCODER;
       break;
     case A_LOW_B_HIGH:
-      current_state = E_TURNING_CW;
+      current_state = E_TURNING_CCW;
       break;
     case A_HIGH_B_LOW:
-      current_state = E_TURNING_CCW;
+      current_state = E_TURNING_CW;
       break;
     case A_HIGH_B_HIGH:
       current_state = E_NOT_TURNING;

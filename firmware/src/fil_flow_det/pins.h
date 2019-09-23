@@ -5,21 +5,18 @@
 #include "Configuration.h"
 
 // Rotary encoder
-#ifdef ENCODER_ENABLED
-  #define PIN_A_ENCODER 2 /// Pin A. Mostly the most left one from the front.
-  #define PIN_B_ENCODER 4 /// Pin B. Mostly the most right one from the front.
-  #define PIN_C_ENCODER 3 /// Pin C. Mostly the middle one.
-#endif ENCODER_ENABLED
+#define PIN_A_ENCODER 2 /// Pin A. Mostly the most left one from the front.
+#define PIN_B_ENCODER 4 /// Pin B. Mostly the most right one from the front.
+#define PIN_C_ENCODER 3 /// Pin C. Mostly the middle one.
 
 // Snap switch
-#ifdef SNAP_SWITCH_ENABLED
-  #define PIN_SNAP_SWITCH 5 /// Default behaviour: open when switch is not pressed.
-#endif SNAP_SWITCH_ENABLED
+#define PIN_SNAP_POWER 5 /// Pin to power switch.
+#define PIN_SNAP_SWITCH 6 /// Default behaviour: open when switch is not pressed.
 
 // Communication with printer
-#define PIN_OUTGOING_PRINTER 6
+#define PIN_OUTGOING_PRINTER 7
 #ifdef TWO_HEAD_ENABLED
-  #define PIN_OUTGOING_PRINTER2 7
+  #define PIN_OUTGOING_PRINTER2 8
 #endif TWO_HEAD_ENABLED
 
 // Error LED

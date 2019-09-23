@@ -20,12 +20,13 @@ class Snap_switch: public Sensor{
   ~Snap_switch();
 
   void init();
+  void test();
 
   void update_state();
   snap_switch_state get_state();
   
  private:
-  snap_switch_state current_state();
+  snap_switch_state current_state;
   
 };
 

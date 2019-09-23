@@ -2,12 +2,18 @@
 
 Fil_flow_det fil_flow_det;
 
-Fil_flow_det::Fil_flow_det(): stopPrinting(false){
-  Fil_flow_det = new Fil_flow_det(stopPrinting);
+Fil_flow_det::Fil_flow_det(): flow_error(false), fil_runout(false){
+#ifndef TEST_ENABLED
+  flow_det = new Flow_detector(flow_error);
+  fil_det = new Fil_detector(fil_runout);
+#endif TEST_ENABLED
 }
 
 Fil_flow_det::~Fil_flow_det(){
-
+#ifndef TEST_ENABLED
+  delete flow_det;
+  delete fil_det;
+#endif TEST_ENABLED
 }
 
 void Fil_flow_det::init(){
@@ -18,12 +24,22 @@ void Fil_flow_det::init(){
 }
 
 void Fil_flow_det::run(){
+#ifdef TEST_ENABLED
+  
+  continuePrinter();
 
-  if(0){
+#else
+
+  fil_det->run();
+  flow_det->run();
+
+  if(flow_error == true || fil_runout == true){
     stopPrinter();
   } else {
     continuePrinter();
   }
+  
+#endif TEST_ENABLED
 }
 
 void Fil_flow_det::stopPrinter(){

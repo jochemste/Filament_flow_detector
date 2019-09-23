@@ -9,7 +9,6 @@ enum pin_mode{
 	      output = 1
 };
 
-#ifdef ENCODER_ENABLED
 // Encoder enums
 enum enc_pin_state{
 		   A_LOW_B_LOW = 0,
@@ -24,14 +23,11 @@ enum encoder_state{
 		   E_TURNING_CCW,
 		   ERROR_ENCODER
 };
-#endif ENCODER_ENABLED
 
-#ifdef SNAP_SWITCH_ENABLED
 // Snap switch enums
 enum snap_switch_state{
 		       E_FIL_DETECTED,
 		       E_FIL_NOT_DETECTED
 };
-#endif SNAP_SWITCH_ENABLED
 
 #endif ENUMS_H
