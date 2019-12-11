@@ -15,12 +15,32 @@ class Fil_detector{
 
   void run();
   bool check();
+#ifdef TWO_HEADS_ENABLED
+  bool check_2();
+#endif TWO_HEADS_ENABLED
+
+  bool get_error();
+#ifdef TWO_HEADS_ENABLED
+  bool get_error_2();
+#endif TWO_HEADS_ENABLED
 
  private:
   bool* runout_detected;
+  bool runout_detected_1;
+#ifdef TWO_HEADS_ENABLED
+  bool runout_detected_2;
+#endif TWO_HEADS_ENABLED
+
 #ifdef SNAP_SWITCH_ENABLED
   Snap_switch* snap_switch;
+  #ifdef TWO_HEADS_ENABLED
+    Snap_switch* snap_switch_2;
+  #endif TWO_HEADS_ENABLED
+
   bool check_snap_switch();
+#ifdef TWO_HEADS_ENABLED
+  bool check_snap_switch_2();
+#endif TWO_HEADS_ENABLED
 #endif SNAP_SWITCH_ENABLED
 };
 

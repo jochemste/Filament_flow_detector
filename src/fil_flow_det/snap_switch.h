@@ -27,7 +27,12 @@ class Snap_switch: public Sensor{
   
  private:
   snap_switch_state current_state;
-  
+  int pin_power; /// Pin used to power the switch
+  int pin_switch; ///Pin used to signal the mcu
+
+  static int nr_switches_=0;
 };
+
+//extern int Snap_switch::nr_switches_ = 0;
 
 #endif SNAP_SWITCH_H

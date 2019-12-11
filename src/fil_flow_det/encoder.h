@@ -20,11 +20,18 @@ class Encoder: public Sensor{
 
  private:
   bool turning_;
+  int pin_a;
+  int pin_b;
+  int pin_c;
   encoder_state current_state;
   enc_pin_state current_pin_state;
   enc_pin_state previous_pin_state;
 
   enc_pin_state read_pins();
+
+  static int nr_encoders_;
 };
+
+int Encoder::nr_encoders_ = 0;
 
 #endif ENCODER_H

@@ -8,6 +8,6 @@
  * Default = 5000
  * 5 second delay between sensor reading and taking action.
  */
-#define MAX_INTERVAL 1000 // 
+#define MAX_INTERVAL 5000 // 
 
 #endif DEFINITIONS_H

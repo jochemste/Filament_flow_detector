@@ -22,7 +22,7 @@
   #endif TWO_HEAD_ENABLED
 
 // Enable the encoder wheel to detect filament movement
-#define ENCODER_ENABLED
+//#define ENCODER_ENABLED
   #ifdef ENCODER_ENABLED
   #endif ENCODER_ENABLED
 
@@ -32,6 +32,11 @@
     // set SNAP_LOGIC_INVERTED to set filament detected with low signal
     #define SNAP_LOGIC_INVERTED false
   #endif SNAP_SWITCH_ENABLED
+
+// Enable laser sensot
+//#define LASER_SENSOR_ENABLED
+  #ifdef LASER_SENSOR_ENABLED
+  #endif LASER_SENSOR_ENABLED
 
 // Uncomment to enable the accelerometer
 //#define ACCELEROMETER_ENABLED
@@ -44,7 +49,7 @@
   #endif ERROR_HANDLER_ENABLED
 
 //Uncomment to enable start signal
-//#define START_SIGNAL_ENABLED
+#define START_SIGNAL_ENABLED
   #ifdef START_SIGNAL_ENABLED
   #endif START_SIGNAL_ENABLED
 
