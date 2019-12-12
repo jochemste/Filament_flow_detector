@@ -36,6 +36,7 @@
 // Enable laser sensot
 //#define LASER_SENSOR_ENABLED
   #ifdef LASER_SENSOR_ENABLED
+  #define LASER_LOGIC_INVERTED false
   #endif LASER_SENSOR_ENABLED
 
 // Uncomment to enable the accelerometer

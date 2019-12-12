@@ -4,6 +4,11 @@
 
 #include "Configuration.h"
 
+/**
+Pin assignment file. Make sure to check the reserved pins at the end of the file to avoid problems.
+*/
+
+
 // Start pin
 #ifdef START_SIGNAL_ENABLED
   #define PIN_START 9
@@ -25,7 +30,14 @@
 #define PIN_SNAP_POWER 5 /// Pin to power switch(es).
 #define PIN_SNAP_SWITCH 6 /// Default behaviour: open when switch is not pressed.
 #ifdef TWO_HEAD_ENABLED
-  #define PIN_SNAP_SWITCH_2 14 /// Second snap switch for two head mode
+  #define PIN_SNAP_SWITCH_2 18 /// A0. Second snap switch for two head mode
+#endif TWO_HEAD_ENABLED
+
+// Laser sensor
+#define PIN_LASER_POWER 21 /// A3. Powers the laser(s)
+#define PIN_LASER_SIG 19 /// A1. Gets the signal from the laser sensor
+#ifdef TWO_HEAD_ENABLED
+  #define PIN_LASER_SIG_2 20 /// A2. Gets signal from second laser sensor
 #endif TWO_HEAD_ENABLED
 
 // Communication with printer
@@ -38,5 +50,15 @@
 #ifdef ERROR_HANDLER_ENABLED
   #define PIN_ERROR_LED 13
 #endif ERROR_HANDLER_ENABLED
+
+/*
+Reserved pins:
+  13: LED (still usable if you dont mind a blinky LED. 
+           By default used as an error LED in this program.)
+  14: MISO
+  15: SCK
+  16: MOSI
+  17: SS
+*/
 
 #endif PINS_H

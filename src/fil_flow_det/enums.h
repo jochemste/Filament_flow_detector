@@ -30,4 +30,10 @@ enum snap_switch_state{
 		       E_FIL_NOT_DETECTED
 };
 
+// Laser sensor enums
+enum laser_sensor_state{
+			E_LFIL_DETECTED,
+			E_LFIL_NOT_DETECTED
+};
+
 #endif ENUMS_H

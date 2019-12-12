@@ -1,0 +1,34 @@
+PD, // D0 - PD2
+   PD,   // D1 - PD3
+   PD, // D2 - PD1
+   PD,   // D3 - PD0
+   PD,   // D4 - PD4
+   PC, // D5 - PC6
+   PD, // D6 - PD7
+   PE, // D7 - PE6
+   
+   PB, // D8 - PB4
+   PB,   // D9 - PB5
+   PB, // D10 - PB6
+   PB,   // D11 - PB7
+   PD, // D12 - PD6
+   PC, // D13 - PC7
+   
+   PB,   // D14 - MISO - PB3
+   PB,   // D15 - SCK - PB1
+   PB,   // D16 - MOSI - PB2
+   PB,   // D17 - SS - PB0
+   
+   PF,   // D18 - A0 - PF7
+   PF, // D19 - A1 - PF6
+   PF, // D20 - A2 - PF5
+   PF, // D21 - A3 - PF4
+   PF, // D22 - A4 - PF1
+   PF, // D23 - A5 - PF0
+   
+   PD, // D24 / D4 - A6 - PD4
+   PD, // D25 / D6 - A7 - PD7
+   PB, // D26 / D8 - A8 - PB4
+   PB, // D27 / D9 - A9 - PB5
+   PB, // D28 / D10 - A10 - PB6
+   PD, // D29 / D12 - A11 - PD6

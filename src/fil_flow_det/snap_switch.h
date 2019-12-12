@@ -5,13 +5,14 @@
 
 /**@brief Snap switch to detect if filament is present. 
  * The filament runs past the sensor, keeping it pressed and returning 
- * either a high of low signal, depending on the connected pin. 
+ * either a high or low signal, depending on the connected pin. 
  * Default is HIGH for filament detected.
  */
 
 #include "enums.h"
 #include "sensor.h"
 #include "pins.h"
+#include "Configuration.h"
 #include <Arduino.h>
 
 class Snap_switch: public Sensor{
@@ -28,9 +29,9 @@ class Snap_switch: public Sensor{
  private:
   snap_switch_state current_state;
   int pin_power; /// Pin used to power the switch
-  int pin_switch; ///Pin used to signal the mcu
+  int pin_signal; ///Pin used to signal the mcu
 
-  static int nr_switches_=0;
+  static int nr_switches_;
 };
 
 //extern int Snap_switch::nr_switches_ = 0;

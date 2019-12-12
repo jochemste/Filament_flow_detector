@@ -1,5 +1,9 @@
 #include "flow_detector.h"
 
+#ifdef ENCODER_ENABLED
+int Encoder::nr_encoders_ = 0;
+#endif ENCODER_ENABLED
+
 Flow_detector::Flow_detector(bool &flow_error){
   no_flow = &flow_error;
   *no_flow = false;

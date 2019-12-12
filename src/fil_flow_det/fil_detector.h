@@ -6,6 +6,9 @@
 #ifdef SNAP_SWITCH_ENABLED
   #include "snap_switch.h"
 #endif SNAP_SWITCH_ENABLED
+#ifdef LASER_SENSOR_ENABLED
+  #include "laser_sensor.h"
+#endif LASER_SENSOR_ENABLED
 
 
 class Fil_detector{
@@ -37,9 +40,19 @@ class Fil_detector{
     Snap_switch* snap_switch_2;
   #endif TWO_HEADS_ENABLED
 
+#ifdef LASER_SENSOR_ENABLED
+  Laser_sensor* laser_sensor;
+  #ifdef TWO_HEADS_ENABLED
+    Laser_sensor* laser_sensor_2;
+  #endif TWO_HEADS_ENABLED
+#endif LASER_SENSOR_ENABLED
+  
+
   bool check_snap_switch();
+  bool check_laser_sens();
 #ifdef TWO_HEADS_ENABLED
   bool check_snap_switch_2();
+  bool check_laser_sens_2();
 #endif TWO_HEADS_ENABLED
 #endif SNAP_SWITCH_ENABLED
 };

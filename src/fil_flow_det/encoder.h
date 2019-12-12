@@ -32,6 +32,4 @@ class Encoder: public Sensor{
   static int nr_encoders_;
 };
 
-int Encoder::nr_encoders_ = 0;
-
 #endif ENCODER_H
