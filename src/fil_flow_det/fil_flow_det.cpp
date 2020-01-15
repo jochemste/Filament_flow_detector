@@ -32,6 +32,7 @@ void Fil_flow_det::run(){
 #ifdef TEST_ENABLED
   
   continuePrinter();
+  continuePrinter_2();
 
 #else
 
@@ -45,19 +46,17 @@ void Fil_flow_det::run(){
   #endif START_SIGNAL_ENABLED
 
   if(flow_error || fil_runout){
-    //    #ifdef TWO_HEAD_ENABLED
     if(TWO_HEAD_MODE){
       if(flow_det->get_error() || fil_det->get_error()){
 	stopPrinter();
       } else if (flow_det->get_error_2() || fil_det->get_error_2()){
 	stopPrinter_2();
       }
-      //#else
-      stopPrinter();
-      //#endif TWO_HEAD_ENABLED
+      //stopPrinter();
     }
   } else {
     continuePrinter();
+    continuePrinter_2();
   }
   
 #endif TEST_ENABLED
