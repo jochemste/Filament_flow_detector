@@ -13,11 +13,12 @@
 #include "sensor.h"
 #include "pins.h"
 #include "Configuration.h"
+#include "error_handler.h"
 #include <Arduino.h>
 
 class Snap_switch: public Sensor{
  public:
-  Snap_switch();
+  Snap_switch(int index);
   ~Snap_switch();
 
   void init();
@@ -30,10 +31,10 @@ class Snap_switch: public Sensor{
   snap_switch_state current_state;
   int pin_power; /// Pin used to power the switch
   int pin_signal; ///Pin used to signal the mcu
+  int index_;
 
   static int nr_switches_;
 };
 
-//extern int Snap_switch::nr_switches_ = 0;
 
 #endif SNAP_SWITCH_H

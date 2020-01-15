@@ -16,7 +16,7 @@
 
 class Laser_sensor: public Sensor{
  public:
-  Laser_sensor();
+  Laser_sensor(int id);
   ~Laser_sensor();
 
   void init();
@@ -29,6 +29,7 @@ class Laser_sensor: public Sensor{
   laser_sensor_state current_state;
   int pin_power; /// Pin used to power the switch
   int pin_signal; /// Pin used to signal the mcu
+  int id_;
 
   static int nr_lasers_;
 

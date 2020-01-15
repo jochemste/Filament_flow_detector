@@ -22,10 +22,10 @@ public:
   void stopPrinter();
   void continuePrinter();
 
-  #ifdef TWO_HEAD_ENABLED
+  //  #ifdef TWO_HEAD_ENABLED
   void stopPrinter_2();
   void continuePrinter_2();
-  #endif TWO_HEAD_ENABLED
+  //  #endif TWO_HEAD_ENABLED
 
 private:
   bool flow_error, fil_runout;

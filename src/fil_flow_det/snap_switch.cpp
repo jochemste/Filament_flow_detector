@@ -1,46 +1,50 @@
 #include "snap_switch.h"
 
-Snap_switch::Snap_switch(){
+Snap_switch::Snap_switch(int index){
+  index_ = index;
   pin_power = PIN_SNAP_POWER;
-  if(++nr_switches_ < 2){
+  if(index == 1){
     pin_signal = PIN_SNAP_SWITCH;
   } else {
-    #ifdef TWO_HEADS_ENABLED
-    pin_signal = PIN_SNAP_SWITCH_2;
-    #endif TWO_HEADS_ENABLED
+    if(index == 2){
+      pin_signal = PIN_SNAP_SWITCH_2;
+      errorhandler.non_blocking_error(10000);
+      errorhandler.non_blocking_error(10000);
+    }
   }
 }
 
 Snap_switch::~Snap_switch(){
-  --nr_switches_;
 }
 
 void Snap_switch::init(){
-  if(nr_switches_ < 2)
-    init_input_pin(pin_power, output); //Should only be done with the first switch,
-                                       //since they use the same pin
+  if(index_)
+    init_input_pin(pin_power, output); //Should only be done with the
+                                       //first switch, since they use
+                                       //the same pin
   init_input_pin(pin_signal, input);
   digitalWrite(pin_power, HIGH);
 }
 
 void Snap_switch::test(){
-  
 }
 
 void Snap_switch::update_state(){
-  #ifdef SNAP_SWITCH_ENABLED
-  if(SNAP_LOGIC_INVERTED == false){
-    if(digitalRead(pin_signal) == HIGH)
-      current_state = E_FIL_DETECTED;
-    else
-      current_state = E_FIL_NOT_DETECTED;
-  } else {
-    if(digitalRead(pin_signal) == LOW)
-      current_state = E_FIL_DETECTED;
-    else
-      current_state = E_FIL_NOT_DETECTED;
+  //#ifdef SNAP_SWITCH_ENABLED
+  if(SNAP_SWITCH_MODE){
+    if(SNAP_LOGIC_INVERTED == false){
+      if(digitalRead(pin_signal) == HIGH)
+	current_state = E_FIL_DETECTED;
+      else
+	current_state = E_FIL_NOT_DETECTED;
+    } else {
+      if(digitalRead(pin_signal) == LOW)
+	current_state = E_FIL_DETECTED;
+      else
+	current_state = E_FIL_NOT_DETECTED;
+    }
   }
-  #endif SNAP_SWITCH_ENABLED
+  //#endif SNAP_SWITCH_ENABLED
 }
 
 

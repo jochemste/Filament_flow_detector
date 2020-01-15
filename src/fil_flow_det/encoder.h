@@ -5,6 +5,7 @@
 #include "pins.h"
 #include "error_handler.h"
 #include "sensor.h"
+#include "Configuration.h"
 #include <Arduino.h>
 
 class Encoder: public Sensor{

@@ -18,9 +18,11 @@ Fil_flow_det::~Fil_flow_det(){
 
 void Fil_flow_det::init(){
   pinMode(PIN_OUTGOING_PRINTER, output);
-#ifdef TWO_HEAD_ENABLED
-  pinMode(PIN_OUTGOING_PRINTER_2, output);
-#endif TWO_HEAD_ENABLED
+  if(TWO_HEAD_MODE){
+    //#ifdef TWO_HEAD_ENABLED
+    pinMode(PIN_OUTGOING_PRINTER_2, output);
+  }
+  //#endif TWO_HEAD_ENABLED
 #ifdef START_SIGNAL_ENABLED
   pinMode(PIN_START, input);
 #endif START_SIGNAL_ENABLED
@@ -33,38 +35,26 @@ void Fil_flow_det::run(){
 
 #else
 
+  fil_det->run();
+  flow_det->run();
+  
   #ifdef START_SIGNAL_ENABLED
-  while(digitalRead(PIN_START) == LOW){ //Check pin state before start
-    continuePrinter();
+  while(digitalRead(PIN_START) == LOW){ //Check pin state before start, to make sure flow detection is not enabled, until the print started
+    flow_error = false;
   }
   #endif START_SIGNAL_ENABLED
 
-  fil_det->run();
-  flow_det->run();
-
   if(flow_error || fil_runout){
-    if(flow_error){
-      #ifdef TWO_HEAD_ENABLED
-      if(flow_det->get_error()){
-	stopPrinter()
-      } else if (flow_det->get_error_2){
-	stopPrinter_2()
+    //    #ifdef TWO_HEAD_ENABLED
+    if(TWO_HEAD_MODE){
+      if(flow_det->get_error() || fil_det->get_error()){
+	stopPrinter();
+      } else if (flow_det->get_error_2() || fil_det->get_error_2()){
+	stopPrinter_2();
       }
-      #else
+      //#else
       stopPrinter();
-      #endif TWO_HEAD_ENABLED
-    }
-
-    if(fil_runout){
-      #ifdef TWO_HEAD_ENABLED
-      if(flow_det->get_error()){
-	stopPrinter()
-      } else if (flow_det->get_error_2){
-	stopPrinter_2()
-      }
-      #else
-      stopPrinter();
-      #endif TWO_HEAD_ENABLED
+      //#endif TWO_HEAD_ENABLED
     }
   } else {
     continuePrinter();
@@ -75,19 +65,25 @@ void Fil_flow_det::run(){
 
 void Fil_flow_det::stopPrinter(){
   digitalWrite(PIN_OUTGOING_PRINTER, FIL_RUNOUT_LOGIC);
+  errorhandler.non_blocking_error(1000);
 }
 
 void Fil_flow_det::continuePrinter(){
   digitalWrite(PIN_OUTGOING_PRINTER, FIL_PRESENT_LOGIC);
 }
 
-#ifdef TWO_HEAD_ENABLED
+//#ifdef TWO_HEAD_ENABLED
 void Fil_flow_det::stopPrinter_2(){
-  digitalWrite(PIN_OUTGOING_PRINTER2, FIL_RUNOUT_LOGIC);
+  if(TWO_HEAD_MODE){
+    digitalWrite(PIN_OUTGOING_PRINTER_2, FIL_RUNOUT_LOGIC);
+    errorhandler.non_blocking_error(10);
+  }
 }
 
 void Fil_flow_det::continuePrinter_2(){
-  digitalWrite(PIN_OUTGOING_PRINTER2, FIL_PRESENT_LOGIC);
+  if(TWO_HEAD_MODE){
+    digitalWrite(PIN_OUTGOING_PRINTER_2, FIL_PRESENT_LOGIC);
+  }
 }
 
-#endif TWO_HEAD_ENABLED
+//#endif TWO_HEAD_ENABLED

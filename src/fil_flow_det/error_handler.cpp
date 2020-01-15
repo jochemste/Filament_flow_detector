@@ -3,9 +3,9 @@
 Errorhandler errorhandler;
 
 Errorhandler::Errorhandler(){
-#ifdef ERROR_HANDLER_ENABLED
+  //#ifdef ERROR_HANDLER_ENABLED
   init();
-#endif ERROR_HANDLER_ENABLED
+  //#endif ERROR_HANDLER_ENABLED
 }
 
 Errorhandler::~Errorhandler(){
@@ -13,11 +13,17 @@ Errorhandler::~Errorhandler(){
 }
 
 void Errorhandler::error_mode(){
-#ifdef ERROR_HANDLER_ENABLED
+//#ifdef ERROR_HANDLER_ENABLED
   while(1){
     blink_led();
   }
-#endif ERROR_HANDLER_ENABLED
+//#endif ERROR_HANDLER_ENABLED
+}
+
+void Errorhandler::non_blocking_error(int del_t){
+  //#ifdef ERROR_HANDLER_ENABLED
+  blink_led_t(del_t);
+  //#endif ERROR_HANDLER_ENABLED
 }
 
 void Errorhandler::init(){
@@ -29,4 +35,11 @@ void Errorhandler::blink_led(){
   delay(100);
   digitalWrite(PIN_ERROR_LED, LOW);
   delay(100);
+}
+
+void Errorhandler::blink_led_t(int del_t){
+  digitalWrite(PIN_ERROR_LED, HIGH);
+  delay(del_t);
+  digitalWrite(PIN_ERROR_LED, LOW);
+  delay(del_t);
 }

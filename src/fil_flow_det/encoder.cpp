@@ -7,11 +7,13 @@ Encoder::Encoder(): turning_(false){
     pin_b=PIN_B_ENCODER;
     pin_c=PIN_C_ENCODER;
   } else {
-    #ifdef TWO_HEADS_ENABLED
-    pin_a=PIN_A_ENCODER_2;
-    pin_b=PIN_B_ENCODER_2;
-    pin_c=PIN_C_ENCODER_2;
-    #endif TWO_HEADS_ENABLED
+    //#ifdef TWO_HEADS_ENABLED
+    if (TWO_HEAD_MODE == true){
+      pin_a=PIN_A_ENCODER_2;
+      pin_b=PIN_B_ENCODER_2;
+      pin_c=PIN_C_ENCODER_2;
+    }
+    //#endif TWO_HEADS_ENABLED
   }
 }
 

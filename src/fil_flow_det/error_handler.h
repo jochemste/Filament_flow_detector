@@ -15,10 +15,12 @@ class Errorhandler{
   ~Errorhandler();
 
   void error_mode();
+  void non_blocking_error(int del_t);
 
  private:
   void init();
   void blink_led();
+  void blink_led_t(int del_t);
   
 };
 
